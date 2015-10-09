@@ -1,8 +1,7 @@
-;; The first three lines of this file were inserted by DrRacket. They record metadata
-;; about the language level of this file in a form that our tools can easily process.
-#reader(lib "htdp-advanced-reader.ss" "lang")((modname design) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #t #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #t)))
 ;; Stephen Andrews
 ;; Individual Project
+
+(require "world-cs1102.rkt")
 
 #|                                     ---LANGUAGE---                                     |#
 
@@ -175,11 +174,61 @@
 
 
 
+#|                                     ---INTERPRETER---                                     |#
+    
+;; The width of the canvas
+(define CANVAS-WIDTH 1024)
+  
+;; The height of the canvas
+(define CANVAS-HEIGHT 600)
+  
+;; The update tick
+(define UPDATE-TICK (/ 1 28))
 
+;; The objects on the canvas
+(define CANVAS-OBJECTS empty)
 
+#|                                     ---HELPER FUNCTIONS---                                     |#
+;; draw-objects : list[objects] -> scene
+;; Draws the all of the objects contained in the canvas on the scene.
+(define (draw-objects objects)
+  (cond [(empty? objects) (empty-scene WIDTH HEIGHT)]
+        [(cons? objects)
+         (let [(obj (first objects))]
+           (place-image
+            (object-shape obj) 5 5 (draw-objects (rest objects))))]))
+  
+;; run-animation : animation -> void
+;; Cycles through the specified animation.
+(define (run-animation a-animation)
+  (begin
+    (big-bang CANVAS-WIDTH CANVAS-HEIGHT UPDATE-TICK true)
+    (tick (animation-commands a-animation))
+    )
+  )
 
+;; tick : list[cmd] -> scene
+;; Called every second. Updates the canvas with the next command
+;; in the queue and reduces the list of commands by one.
+(define (tick commands)
+  (run-command (first commands))
+  (update-frame (draw-objects CANVAS-OBJECTS))
+  (sleep/yield 1)
+  (tick (rest commands)))
 
-
+;; run-command : command -> void
+;; The logic for running the different command types.
+;; Invokes the determined command.
+(define (run-command a-command)
+  (cond ([(tween? a-command) 7] 
+         [(set-loc? a-command) 7]
+         [(do-repeat? a-command) 7]
+         [(remove-object? a-command) 7]
+         [(add-object? a-command) 7]
+         [(stop-object? a-command) 7]
+         [(end-animation a-command) 7]))
+  )
+                                
 
 
 
