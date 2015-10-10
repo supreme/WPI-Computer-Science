@@ -8,14 +8,11 @@
 ;; An animation is (make-animation list[command])
 (define-struct animation (commands))
 
-;; A canvas is (make-canvas number number list[object])
-(define-struct canvas (width height objs))
-
 ;; A object is (make-object symbol shape location color)
 (define-struct object (name shape loc color))
 
-;; A location is (make-location number number number number)
-(define-struct location (x y dx dy))
+;; A location is (make-location number number)
+(define-struct location (x y))
 
 ;; A shape is
 ;; - (make-rect width height)
@@ -29,9 +26,9 @@
 ;; The collider will check if a collision has been detected within the list of
 ;; objects on the canvas as well as the canvas boundary
 ;; An obj-collider can either be
-;; - (make-collider object canvas boolean list[collision-event]), or
+;; - (make-collider object obstacle boolean list[collision-event]), or
 ;; - 'null for commands that do not require a collider clause
-(define-struct obj-collider (obj a-canvas clipped? events))
+(define-struct obj-collider (obj obstacle clipped? event))
 
 ;; A command is
 ;; - (make-tween object obj-collider canvas)
