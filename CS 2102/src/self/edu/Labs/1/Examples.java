@@ -14,7 +14,7 @@ public class Examples {
         @Override
         public List<Song> getCollection() {
             return Arrays.asList(new Song("Rock", "Paint it Black", 300),
-                                 new Song("Rap", "Labs.Song", 190));
+                                 new Song("Rap", "labs.Song", 190));
         }
     }, "A Guy", 2005);
 
