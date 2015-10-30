@@ -1,0 +1,8 @@
+
+TESTING:
+---------------------------------------------------
+All testing methods must be prefixed with 'test'
+    testMyMethod() {
+        return t.checkExpect(..., ...);
+    }
+---------------------------------------------------
