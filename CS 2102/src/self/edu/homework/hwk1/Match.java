@@ -2,6 +2,8 @@ package self.edu.homework.hwk1;
 
 import self.edu.homework.hwk1.model.IContestant;
 import self.edu.homework.hwk1.model.IResult;
+import self.edu.homework.hwk1.model.robotics.RoboticsResult;
+import self.edu.homework.hwk1.model.rugby.RugbyResult;
 
 /**
  * @author Stephen Andrews
@@ -45,7 +47,20 @@ public class Match {
     }
 
     public IContestant winner() {
-        return team1; //TODO
+        if (results instanceof RoboticsResult) {
+            RoboticsResult matchResults = (RoboticsResult) results;
+            boolean didTeam1Fall = matchResults.didTeam1DidFallDown();
+            boolean didTeam2Fall = matchResults.didTeam2DidFallDown();
+            int team1Points = (didTeam1Fall ? matchResults.getTeam1Points() - 5 : matchResults.getTeam1Points());
+            int team2Points =(didTeam2Fall ? matchResults.getTeam2Points() - 5 : matchResults.getTeam2Points());
+            int team1Tasks = matchResults.getTeam1AttemptedTasks();
+            int team2Tasks = matchResults.getTeam2AttemptedTasks();
+
+            return (team1Points + team1Tasks > team2Points + team2Tasks ? team1 : team2);
+        } else {
+            RugbyResult matchResults = (RugbyResult) results;
+            return (matchResults.getTeam1points() > matchResults.getTeam2points() ? team1 : team2);
+        }
     }
 
     public boolean underdogWon() {

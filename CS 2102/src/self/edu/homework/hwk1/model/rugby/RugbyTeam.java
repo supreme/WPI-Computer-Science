@@ -22,7 +22,7 @@ public class RugbyTeam implements IContestant {
     private String jersey;
 
     /**
-     * Whether or not the team has an pre-game intimidation ritual.
+     * Whether or not the team has a pre-game intimidation ritual.
      */
     private boolean hasIntimidationRitual;
 
@@ -40,7 +40,7 @@ public class RugbyTeam implements IContestant {
      * Constructs an {@link RugbyTeam}.
      * @param country The country the team belongs to.
      * @param jersey The color of the team's jersey.
-     * @param hasIntimidationRitual Whether or not the team has an pre-game intimidation ritual.
+     * @param hasIntimidationRitual Whether or not the team has a pre-game intimidation ritual.
      * @param wins The amount of wins the team has.
      * @param loses The amount of losses the team has.
      */
@@ -52,49 +52,61 @@ public class RugbyTeam implements IContestant {
         this.loses = loses;
     }
 
+    /**
+     * Gets the country the team belongs to.
+     * @return The country the team belongs to.
+     */
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
+    /**
+     * Gets the color of the team's jersey.
+     * @return The color of the team's jersey.
+     */
     public String getJersey() {
         return jersey;
     }
 
-    public void setJersey(String jersey) {
-        this.jersey = jersey;
-    }
 
+    /**
+     * Whether or not the team has a pre-game intimidation ritual.
+     * @return <code>true</code> if so, <code>false</code> if not.
+     */
     public boolean isHasIntimidationRitual() {
         return hasIntimidationRitual;
     }
 
-    public void setHasIntimidationRitual(boolean hasIntimidationRitual) {
-        this.hasIntimidationRitual = hasIntimidationRitual;
-    }
-
+    /**
+     * Gets the amount of wins the team has.
+     * @return The amount of wins the team has.
+     */
     public int getWins() {
         return wins;
     }
 
+    /**
+     * Sets the amount of wins the team has.
+     * @param wins The new win value to set.
+     */
     public void setWins(int wins) {
         this.wins = wins;
     }
 
+    /**
+     * Gets the amount of loses the team has.
+     * @return The amount of loses the team has.
+     */
     public int getLoses() {
         return loses;
     }
 
+    /**
+     * Sets the amount of losses the team has.
+     * @param loses The new loses value to set.
+     */
     public void setLoses(int loses) {
         this.loses = loses;
-    }
-
-    @Override
-    public String getTeamOrigin() {
-        return country;
     }
 
     @Override
