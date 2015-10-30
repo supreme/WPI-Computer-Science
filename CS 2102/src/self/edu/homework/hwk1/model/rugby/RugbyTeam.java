@@ -2,8 +2,6 @@ package self.edu.homework.hwk1.model.rugby;
 
 import self.edu.homework.hwk1.model.IContestant;
 
-import java.awt.*;
-
 /**
  * Represents a {@link RugbyTeam}.
  * @author Stephen Andrews
@@ -34,7 +32,7 @@ public class RugbyTeam implements IContestant {
     /**
      * The amount of losses the team has.
      */
-    private int loses;
+    private int losses;
 
     /**
      * Constructs an {@link RugbyTeam}.
@@ -42,14 +40,14 @@ public class RugbyTeam implements IContestant {
      * @param jersey The color of the team's jersey.
      * @param hasIntimidationRitual Whether or not the team has a pre-game intimidation ritual.
      * @param wins The amount of wins the team has.
-     * @param loses The amount of losses the team has.
+     * @param losses The amount of losses the team has.
      */
-    public RugbyTeam(String country, String jersey, boolean hasIntimidationRitual, int wins, int loses) {
+    public RugbyTeam(String country, String jersey, boolean hasIntimidationRitual, int wins, int losses) {
         this.country = country;
         this.jersey = jersey;
         this.hasIntimidationRitual = hasIntimidationRitual;
         this.wins = wins;
-        this.loses = loses;
+        this.losses = losses;
     }
 
     /**
@@ -73,7 +71,7 @@ public class RugbyTeam implements IContestant {
      * Whether or not the team has a pre-game intimidation ritual.
      * @return <code>true</code> if so, <code>false</code> if not.
      */
-    public boolean isHasIntimidationRitual() {
+    public boolean hasIntimidationRitual() {
         return hasIntimidationRitual;
     }
 
@@ -94,23 +92,49 @@ public class RugbyTeam implements IContestant {
     }
 
     /**
-     * Gets the amount of loses the team has.
-     * @return The amount of loses the team has.
+     * Gets the amount of losses the team has.
+     * @return The amount of losses the team has.
      */
-    public int getLoses() {
-        return loses;
+    public int getLosses() {
+        return losses;
     }
 
     /**
      * Sets the amount of losses the team has.
-     * @param loses The new loses value to set.
+     * @param losses The new losses value to set.
      */
-    public void setLoses(int loses) {
-        this.loses = loses;
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    /**
+     * Gets the win/loss ratio for the team.
+     * @return The win/loss ratio for the team.
+     */
+    private double getWinLossRatio() {
+        return wins/losses;
     }
 
     @Override
     public boolean expectToBeat(IContestant opponent) {
+        //TODO: Cleanup, ugly code :(
+        RugbyTeam o = (RugbyTeam) opponent;
+        if (o.hasIntimidationRitual && !hasIntimidationRitual) {
+            return false;
+        }
+
+        if (hasIntimidationRitual && !o.hasIntimidationRitual) {
+            return true;
+        }
+
+        if (getWinLossRatio() > o.getWinLossRatio()) {
+            return true;
+        }
+
+        if (o.getWinLossRatio() > getWinLossRatio()) {
+            return false;
+        }
+
         return false;
     }
 }

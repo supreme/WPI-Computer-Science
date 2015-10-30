@@ -70,7 +70,15 @@ public class RoboticsTeam implements IContestant {
 
     @Override
     public boolean expectToBeat(IContestant opponent) {
-        return false;
-    }
+        RoboticsTeam o = (RoboticsTeam) opponent;
+        String oSpecial = o.getSpecialFeature();
 
+        if (oSpecial.length() > specialFeature.length()) {
+            return false;
+        } else if (specialFeature.length() > oSpecial.length()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
