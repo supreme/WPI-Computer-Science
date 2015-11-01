@@ -3,16 +3,23 @@ package self.edu.homework.hwk1;
 import tester.Tester;
 
 /**
- * Contains various examples for testing our code.
+ * Contains various examples for testing our implementation
+ * of the problem.
  * @author Stephen Andrews
  * @author Ted Bieber
  */
 public class Examples {
+
     RoboticsTeam wpi = new RoboticsTeam("WPI", "Bleats like a goat", 1);
     RoboticsTeam rpi = new RoboticsTeam("RPI", "Falls over", 0);
     RoboticsTeam mit = new RoboticsTeam("MIT", "Costs a lot", 2);
     RoboticsTeam wpiWannabes = new RoboticsTeam("'WPI'", "baaaaaaaaaaaaaaaaa", 1);
 
+    /**
+     * -------------------------------------------------
+     *              ASSIGNMENT EXAMPLES
+     * -------------------------------------------------
+     */
     // tests whether wpi will beat rpi in expectToBeat
     boolean testWpiVSRpi(Tester t) {
         return t.checkExpect(wpi.expectToBeat(rpi),

@@ -1,0 +1,11 @@
+1. It would be possible to construct this type of match as long as the results for the other
+   kind of contest implemented the 'IResult' interface. You would run into errors though when
+   you attempted to call the winner() method since we determine the type of object we have
+   before calculating the winner.
+
+2. Our code allows this match to be created since the design pattern issued in the assignment
+   makes use of type casting through the 'IContestant' and 'IResult' interfaces.
+
+3. Yes. We could prevent this by verifying that each team is of the same type via the instanceof operator.
+   Additionally we would also have to check that the results of the match are of the correct type in the
+   same manner.
