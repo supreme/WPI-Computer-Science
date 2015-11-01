@@ -1,10 +1,5 @@
 package self.edu.homework.hwk1;
 
-import self.edu.homework.hwk1.model.IContestant;
-import self.edu.homework.hwk1.model.IResult;
-import self.edu.homework.hwk1.model.robotics.RoboticsResult;
-import self.edu.homework.hwk1.model.rugby.RugbyResult;
-
 /**
  * Represents a match between two {@link IContestant}s and declares
  * a winner based on the {@link IResult}s of the match.

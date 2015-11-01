@@ -1,6 +1,4 @@
-package self.edu.homework.hwk1.model;
-
-import self.edu.homework.hwk1.Match;
+package self.edu.homework.hwk1;
 
 /**
  * An interface for contestants in a {@link Match}.

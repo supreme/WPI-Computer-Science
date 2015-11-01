@@ -1,6 +1,4 @@
-package self.edu.homework.hwk1.model.robotics;
-
-import self.edu.homework.hwk1.model.IContestant;
+package self.edu.homework.hwk1;
 
 /**
  * Represents a {@link RoboticsTeam}.

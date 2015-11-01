@@ -1,6 +1,4 @@
-package self.edu.homework.hwk1.model.rugby;
-
-import self.edu.homework.hwk1.model.IContestant;
+package self.edu.homework.hwk1;
 
 /**
  * Represents a {@link RugbyTeam}.
@@ -112,27 +110,18 @@ public class RugbyTeam implements IContestant {
      * @return The win/loss ratio for the team.
      */
     private double getWinLossRatio() {
-        return wins/losses;
+        return (double) wins/losses;
     }
 
     @Override
     public boolean expectToBeat(IContestant opponent) {
-        //TODO: Cleanup, ugly code :(
         RugbyTeam o = (RugbyTeam) opponent;
-        if (o.hasIntimidationRitual && !hasIntimidationRitual) {
-            return false;
-        }
-
         if (hasIntimidationRitual && !o.hasIntimidationRitual) {
             return true;
         }
 
         if (getWinLossRatio() > o.getWinLossRatio()) {
             return true;
-        }
-
-        if (o.getWinLossRatio() > getWinLossRatio()) {
-            return false;
         }
 
         return false;

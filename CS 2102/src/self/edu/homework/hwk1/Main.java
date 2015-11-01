@@ -1,11 +1,5 @@
 package self.edu.homework.hwk1;
 
-import self.edu.homework.hwk1.model.IContestant;
-import self.edu.homework.hwk1.model.IResult;
-import self.edu.homework.hwk1.model.robotics.RoboticsResult;
-import self.edu.homework.hwk1.model.robotics.RoboticsTeam;
-import self.edu.homework.hwk1.model.rugby.RugbyResult;
-import self.edu.homework.hwk1.model.rugby.RugbyTeam;
 import tester.*;
 
 public class Main {

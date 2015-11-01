@@ -1,7 +1,4 @@
-package self.edu.homework.hwk1.model.robotics;
-
-import self.edu.homework.hwk1.Match;
-import self.edu.homework.hwk1.model.IResult;
+package self.edu.homework.hwk1;
 
 /**
  * Represents the results of a robotics {@link Match}.
